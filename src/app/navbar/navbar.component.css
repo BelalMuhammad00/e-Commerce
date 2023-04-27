@@ -1,0 +1,60 @@
+i:hover{
+color: #0aad0a;
+cursor: pointer;
+}
+.activeBtn {
+
+  background: transparent;
+  border: none;
+
+  text-transform: uppercase;
+  position: relative;
+  transition: .5s ease;
+}
+
+.activeBtn::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: #0aad0a;
+  transition: .5s ease;
+}
+
+.activeBtn:hover {
+  color: white;
+  transition-delay: .5s;
+}
+
+.activeBtn:hover::before {
+  width: 100%;
+}
+
+.activeBtn::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: #0aad0a;
+  transition: .4s ease;
+  z-index: -1;
+}
+
+.activeBtn:hover::after {
+  height: 100%;
+  transition-delay: 0.4s;
+  color: aliceblue;
+}
+
+.bg-btn{
+  background-color: #0aad0a;
+  color: white;
+}
+
+.nav-item{
+  margin: 0 0.2rem;
+}

@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row align-items-center">
+    <div class="col-md-4">
+      <!-- <img [src]="productDetails.imageCover" class="w-100" alt="product"> -->
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img [src]="productDetails.imageCover" class="d-block w-100" alt="...">
+          </div>
+          <div *ngFor="let img of productDetails.images" data-bs-interval="2000" class="carousel-item">
+            <img [src]="img" class="d-block w-100" alt="...">
+          </div>
+
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h2>{{productDetails.title}}</h2>
+      <p class="text-muted">{{productDetails.description}}</p>
+
+
+      <div class="d-flex justify-content-between pb-3">
+        <span>{{productDetails.price}} EGP</span>
+        <div>
+          <i class="fa fa-star rating-color"></i>
+         {{productDetails.ratingsAverage}}
+        </div>
+      </div>
+      <a class="fancy" (click)="addProduct(productDetails.id)">
+        <span class="top-key"></span>
+        <span class="text">+ Add</span>
+        <span class="bottom-key-1"></span>
+        <span class="bottom-key-2"></span>
+      </a>
+      <!-- <button class="btn bg-main w-100 text-white ">+ Add</button> -->
+
+    </div>
+  </div>
+</div>

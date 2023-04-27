@@ -1,0 +1,47 @@
+<form  [formGroup]="loginForm" (ngSubmit)="login(loginForm)" class="mb-5 pb-5">
+  <div class="container">
+    <h2 class="my-3">Login Now :</h2>
+<!-- <h3>{{loginForm.get('name')?.errors | json}}</h3> -->
+
+<div *ngIf="apiError" class="alert alert-danger">
+  {{apiError}}
+</div>
+
+
+
+
+
+
+    <label for="email">Email :</label>
+    <input type="email" id="email" formControlName="email" class="form-control mb-2">
+
+    <div *ngIf="loginForm.get('email')?.errors &&(loginForm.get('email')?.touched||isNotValid)"  class="alert alert-danger">
+      <p *ngIf="loginForm.get('email')?.getError('required')" class="mb-0">email is required</p>
+      <p *ngIf="loginForm.get('email')?.getError('email')" class="mb-0">email invalid</p>
+    </div>
+
+    <label for="password">Password :</label>
+    <input type="password" id="password" formControlName="password" class="form-control mb-2">
+
+    <div *ngIf="loginForm.get('password')?.errors && (loginForm.get('password')?.touched||isNotValid)"  class="alert alert-danger">
+      <p *ngIf="loginForm.get('password')?.getError('required')" class="mb-0">password is required</p>
+      <p *ngIf="loginForm.get('password')?.getError('pattern')" class="mb-0">password Pattern is wrong</p>
+    </div>
+
+
+
+
+
+
+
+<button  class="btn bg-main text-light ms-auto d-block">
+  <i *ngIf="isLoding" class="fa fa-spinner fa-spin"></i>
+
+  <span *ngIf="!isLoding||apiError">Login</span>
+</button>
+
+  </div>
+  <!-- [disabled]="loginForm.invalid" -->
+<!-- Any198 -->
+
+</form>

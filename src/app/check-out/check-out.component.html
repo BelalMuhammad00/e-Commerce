@@ -1,0 +1,29 @@
+<div class="w-75 mx-auto py-4">
+  <form [formGroup]="shippingAddress" (ngSubmit)="handleOnline()">
+<label for="details">details :</label>
+<input type="text" id="details" formControlName="details" class="form-control mb-3">
+
+<div *ngIf="shippingAddress.get('details')?.errors && (shippingAddress.get('details')?.touched)"  class="alert alert-danger">
+  <p *ngIf="shippingAddress.get('details')?.getError('required')" class="mb-0">details is required</p>
+</div>
+
+<label for="Phone">Phone :</label>
+<input type="tel" id="Phone" formControlName="phone" class="form-control mb-3">
+
+<div *ngIf="shippingAddress.get('phone')?.errors && (shippingAddress.get('phone')?.touched)"  class="alert alert-danger">
+  <p *ngIf="shippingAddress.get('phone')?.getError('required')" class="mb-0">phone is required</p>
+  <p *ngIf="shippingAddress.get('phone')?.getError('minlength')" class="mb-0">phone minLength 10</p>
+  <p *ngIf="shippingAddress.get('phone')?.getError('maxlength')" class="mb-0">phone maxLength 13</p>
+</div>
+
+
+<label for="city">city :</label>
+<input type="text" id="city" formControlName="city" class="form-control mb-3">
+
+<div *ngIf="shippingAddress.get('city')?.errors && (shippingAddress.get('city')?.touched)"  class="alert alert-danger">
+  <p *ngIf="shippingAddress.get('city')?.getError('required')" class="mb-0">city is required</p>
+</div>
+
+<button class="btn btn-outline-info w-100 ">Pay</button>
+  </form>
+</div>
