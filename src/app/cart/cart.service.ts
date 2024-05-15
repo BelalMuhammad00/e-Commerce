@@ -22,7 +22,7 @@ numOfCartItems:BehaviorSubject<number>= new BehaviorSubject(0);
   }
 
   addToCart(productId:string):Observable<any>{
-return this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
+return this._http.post(`https://ecommerce.routemisr.com/api/v1/cart`,
 {productId:productId},
 {headers:{
   token:`${this.token}`
@@ -32,7 +32,7 @@ return this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
 
 
   getCart():Observable<any>{
-    return this._http.get(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
+    return this._http.get(`https://ecommerce.routemisr.com/api/v1/cart`,
 
     {headers:{
       token:`${this.token}`
@@ -41,7 +41,7 @@ return this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
       }
 
   updateCart(id:string,x:number):Observable<any>{
-        return this._http.put(`https://route-ecommerce-app.vercel.app/api/v1/cart/${id}`,
+        return this._http.put(`https://ecommerce.routemisr.com/api/v1/cart/${id}`,
 {count:x},
         {headers:{
           token:`${this.token}`
@@ -50,7 +50,7 @@ return this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
           }
 
   removeItem(id:string):Observable<any>{
-            return this._http.delete(`https://route-ecommerce-app.vercel.app/api/v1/cart/${id}`,
+            return this._http.delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}`,
 
             {headers:{
               token:`${this.token}`
@@ -60,7 +60,7 @@ return this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/cart`,
 
 
  generateOnlinePayment(carTID:string,shippingAddress:any):Observable<any>{
-            return this._http.post(`https://route-ecommerce.onrender.com/api/v1/orders/checkout-session/${carTID}?url=http://localhost:4200`,
+            return this._http.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${carTID}?url=https://belalmuhammad00.github.io/e-Commerce/`,
 {shippingAddress:shippingAddress},
             {headers:{
               token:`${this.token}`

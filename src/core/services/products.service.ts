@@ -10,15 +10,19 @@ export class ProductsService {
   constructor(private _http:HttpClient) { }
 
   getProducts():Observable<any>{
-   return this._http.get(`https://route-ecommerce-app.vercel.app/api/v1/products`)
+   return this._http.get(`https://ecommerce.routemisr.com/api/v1/products`)
   }
 
   getProductsByID(id:string):Observable<any>{
-    return this._http.get(`https://route-ecommerce-app.vercel.app/api/v1/products/${id}`)
+    return this._http.get(`https://ecommerce.routemisr.com/api/v1/products/${id}`)
    }
 
    getCategorys():Observable<any>{
-    return this._http.get(`https://route-ecommerce-app.vercel.app/api/v1/categories`)
+    return this._http.get(`https://ecommerce.routemisr.com/api/v1/categories`)
    }
 
 }
+
+
+
+

@@ -29,11 +29,11 @@ getUserData(){
 
 
   register(data:any):Observable<any> {
- return   this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/auth/signup`,data)
+ return   this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,data)
   }
 
   login(data:any):Observable<any> {
-    return   this._http.post(`https://route-ecommerce-app.vercel.app/api/v1/auth/signin`,data)
+    return   this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`,data)
      }
 
   logOut(){
@@ -41,4 +41,5 @@ getUserData(){
     this.userData.next(null);
     this.router.navigate(['/login'])
   }
+
 }
