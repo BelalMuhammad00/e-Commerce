@@ -20,7 +20,7 @@ constructor(private _cartService:CartService){}
 
 getCart(){
   this._cartService.getCart().subscribe({
-    next:(res)=>{console.log(res)
+    next:(res)=>{
 this.cartDetails=res
     },
     error:(err)=>{console.log(err);}
@@ -29,7 +29,7 @@ this.cartDetails=res
 
 ubdateCart(id:string,count:number){
   this._cartService.updateCart(id,count).subscribe({
-    next:(res)=>{console.log(res);
+    next:(res)=>{
     this.cartDetails=res;
     },
     error:(err)=>{console.log(err);

@@ -21,7 +21,6 @@ getUserData(){
   let encodedToken=JSON.stringify(localStorage.getItem("userToken"));
  let encoded= jwtDecode(encodedToken);
 
- console.log(encoded);
 
  this.userData.next(encoded);
 
@@ -29,6 +28,7 @@ getUserData(){
 
 
   register(data:any):Observable<any> {
+    
  return   this._http.post(`https://ecommerce.routemisr.com/api/v1/auth/signup`,data)
   }
 

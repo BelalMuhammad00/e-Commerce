@@ -23,13 +23,13 @@ constructor(private _ActivatedRoute:ActivatedRoute,
    private _cartService:CartService
    ){
   this._ActivatedRoute.params.subscribe((res:any) =>{
-    console.log(res.id);
+    
    this.productId=res.id;
 
   })
 
 this._productService.getProductsByID(this.productId).subscribe({
-  next:(res)=>{ console.log(res.data);
+  next:(res)=>{ 
     this.productDetails=res.data;
   }
 })
@@ -37,7 +37,7 @@ this._productService.getProductsByID(this.productId).subscribe({
 }
 addProduct(id:string){
   this._cartService.addToCart(id).subscribe({
-    next:(res)=>{ console.log(res);
+    next:(res)=>{ 
     }
   })
 }

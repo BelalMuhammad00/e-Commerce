@@ -26,14 +26,15 @@ registerForm:FormGroup=new FormGroup({
   phone : new FormControl('',[Validators.required,Validators.minLength(10),Validators.maxLength(13)]),
 })
 
-register(form:FormGroup){
-console.log(form);
+register(){
+console.log(this.registerForm);
 
 
-if(form.valid){
+if(this.registerForm.valid){
+  this.apiError='';
   this.isLoding=true;
-
-  this._AuthService.register(form.value).subscribe({
+  
+  this._AuthService.register(this.registerForm.value).subscribe({
     next:(res:any)=>{ console.log(res);
       this.isLoding=false;
       this._router.navigate(['/login'])

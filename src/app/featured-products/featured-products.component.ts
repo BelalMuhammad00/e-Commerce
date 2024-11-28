@@ -24,7 +24,7 @@ ngOnInit(): void {
 getProduct(){
   this._productsService.getProducts().subscribe({
     next:(res)=>{
-      console.log(res);
+    
       this.allProducts=res.data;
     }
   })

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
@@ -7,12 +7,19 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class CartService {
 
-token:string|null;
+ token:string|null;
 
+
+// headers = {
+//    token: localStorage.getItem('userToken')||""
+// }
+headers = new HttpHeaders({
+  token: localStorage.getItem('userToken') || ""
+});
 numOfCartItems:BehaviorSubject<number>= new BehaviorSubject(0);
 
   constructor(private _http:HttpClient) {
-    this.token=`${localStorage.getItem('userToken')}`;
+     this.token=`${localStorage.getItem('userToken')}`;
 
     this.getCart().subscribe({
       next:(res)=>{
@@ -22,21 +29,18 @@ numOfCartItems:BehaviorSubject<number>= new BehaviorSubject(0);
   }
 
   addToCart(productId:string):Observable<any>{
+
+
 return this._http.post(`https://ecommerce.routemisr.com/api/v1/cart`,
-{productId:productId},
-{headers:{
-  token:`${this.token}`
-}}
+{productId},
+{headers:{token: localStorage.getItem('userToken')||""}}
 )
   }
 
 
   getCart():Observable<any>{
     return this._http.get(`https://ecommerce.routemisr.com/api/v1/cart`,
-
-    {headers:{
-      token:`${this.token}`
-    }}
+      {headers:this.headers}
     )
       }
 

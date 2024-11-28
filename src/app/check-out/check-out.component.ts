@@ -16,7 +16,7 @@ cartID:string='';
 
     this._activatedRoute.paramMap.subscribe((res:any)=>{
       this.cartID=res.params.cartID;
-      console.log(this.cartID);
+      
 
     })
   }
@@ -30,7 +30,7 @@ cartID:string='';
   handleOnline(){
 
      this._cartService.generateOnlinePayment(this.cartID,this.shippingAddress.value).subscribe({
-      next:(res)=>{console.log(res);
+      next:(res)=>{
         if(res.status=='success'){
           window.location.href=res.session.url
         }
