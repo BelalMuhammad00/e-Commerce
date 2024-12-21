@@ -28,7 +28,7 @@ if(form.valid){
   this.isLoding=true;
 
   this._AuthService.login(form.value).subscribe({
-    next:(res:any)=>{ console.log(res);
+    next:(res:any)=>{ 
       this.isLoding=false;
       localStorage.setItem("userToken",res.token);
       this._AuthService.getUserData()

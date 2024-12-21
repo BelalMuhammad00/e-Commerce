@@ -24,7 +24,10 @@ import { OrdersComponent } from './orders/orders.component';
 import { LoaderComponent } from './loader/loader.component';
 import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 import { MainSliderComponent } from './main-slider/main-slider.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { WishListComponent } from './WishList/wish-list/wish-list.component';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +48,8 @@ import { MainSliderComponent } from './main-slider/main-slider.component';
     CheckOutComponent,
     OrdersComponent,
     LoaderComponent,
-    MainSliderComponent
+    MainSliderComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +57,10 @@ import { MainSliderComponent } from './main-slider/main-slider.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    CartModule
+    CartModule,
+    BrowserAnimationsModule,
+    CarouselModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide:HTTP_INTERCEPTORS,

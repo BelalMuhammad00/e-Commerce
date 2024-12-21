@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/core/services/auth.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class SignUpComponent {
   apiError:string='';
   isNotValid:boolean=false;
 
-constructor(private _AuthService:AuthService , private _router:Router){}
+constructor(private _AuthService:AuthService , private _router:Router , private _toaster:ToastrService){}
 
 
 registerForm:FormGroup=new FormGroup({
@@ -37,7 +38,9 @@ if(this.registerForm.valid){
   this._AuthService.register(this.registerForm.value).subscribe({
     next:(res:any)=>{ console.log(res);
       this.isLoding=false;
-      this._router.navigate(['/login'])
+      this._router.navigate(['/login']);
+      this._toaster.success("you have successfully rgistered your account");
+
     },
     error:(err:any)=>{ console.log(err);
       this.apiError=err.error.message;

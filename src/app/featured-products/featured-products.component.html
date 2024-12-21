@@ -1,4 +1,5 @@
-<div class="container py-5">
+<div class="container py-5" data-aos="fade-up"
+data-aos-duration="2000">
 
 <div class="group pb-4">
   <svg class="icon" aria-hidden="true" viewBox="0 0 24 24">
@@ -12,7 +13,7 @@
 
 
   <div class="row">
-  <div class="col-md-3" *ngFor="let product of allProducts | search:searchTerm ">
+  <div class="col-md-3  col-6" *ngFor="let product of allProducts | search:searchTerm ">
       <app-products [product]="product"></app-products>
     </div>
   </div>

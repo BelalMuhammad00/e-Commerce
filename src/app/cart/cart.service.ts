@@ -8,8 +8,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class CartService {
 
  token:string|null;
-
-
+private wishListIems:any[]=[];
+private storagewishListIems :string= 'wishListIems';
 // headers = {
 //    token: localStorage.getItem('userToken')||""
 // }
@@ -19,13 +19,24 @@ headers = new HttpHeaders({
 numOfCartItems:BehaviorSubject<number>= new BehaviorSubject(0);
 
   constructor(private _http:HttpClient) {
-     this.token=`${localStorage.getItem('userToken')}`;
 
+    
+     this.token=`${localStorage.getItem('userToken')}`;
+const storewishListIems = localStorage.getItem(this.storagewishListIems);
     this.getCart().subscribe({
       next:(res)=>{
         this.numOfCartItems.next(res.numOfCartItems);
       }
     })
+
+    if(storewishListIems){
+      this.wishListIems=JSON.parse(storewishListIems)
+    }
+
+  }
+
+    updateCartItemCount(newCount: number) {
+    this.numOfCartItems.next(newCount);
   }
 
   addToCart(productId:string):Observable<any>{
@@ -71,5 +82,36 @@ return this._http.post(`https://ecommerce.routemisr.com/api/v1/cart`,
             }}
             )
     }
+
+    addProductToWishList(product:any):Observable<any>{
+      this.wishListIems.push(product);
+
+      localStorage.setItem(this.storagewishListIems,JSON.stringify(this.wishListIems));
+      return this._http.post(`https://ecommerce.routemisr.com/api/v1/wishlist`,{productId:product.id},
+        {headers:{token: localStorage.getItem('userToken')||""}}
+      )
+          };
+      
+        RemoveProductFromWishList(productId:string):Observable<any>{
+          const index = this.wishListIems.findIndex(item=>item.id === productId);
+
+          if(index !== -1){
+            this.wishListIems.splice(1,index);
+            localStorage.setItem(this.storagewishListIems,JSON.stringify(this.wishListIems));
+          }
+            return this._http.delete(`https://ecommerce.routemisr.com/api/v1/wishlist/${productId}`,
+              {headers:{token: localStorage.getItem('userToken')||""}}
+            )
+         };
+      
+        GetWishList():Observable<any>{
+          return this._http.get(`https://ecommerce.routemisr.com/api/v1/wishlist`,
+            {headers:{token: localStorage.getItem('userToken')||""}}
+          )
+       };
+
+       IsInWisList(product:any):boolean{
+        return this.wishListIems.some((item:any)=> item.id ===product.id);
+     };
 
 }

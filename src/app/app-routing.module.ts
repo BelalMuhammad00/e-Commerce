@@ -12,11 +12,12 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { OrdersComponent } from './orders/orders.component';
+import { WishListComponent } from './WishList/wish-list/wish-list.component';
 
 const routes: Routes = [
-  {path:"",redirectTo:"home",pathMatch:'full'},
+  {path:"",redirectTo:"about",pathMatch:'full'},
   {path:"home",canActivate:[AuthGuard],component:HomeComponent},
-  {path:"about",canActivate:[AuthGuard],component:AboutComponent},
+  {path:"about",component:AboutComponent},
 
   {path:"products",canActivate:[AuthGuard],component:ProductsComponent},
   {path:"brands",canActivate:[AuthGuard],component:BrandComponent},
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path:"checkOut/:cartID",canActivate:[AuthGuard],component:CheckOutComponent},
   {path:"allorders",canActivate:[AuthGuard],component:OrdersComponent},
   {path:"productDetails/:id",canActivate:[AuthGuard],component:ProductDetailsComponent},
-
+  {path:"wishList",canActivate:[AuthGuard],component:WishListComponent },
 
   {path:"login",component:SignInComponent},
   {path:"signUp",component:SignUpComponent},

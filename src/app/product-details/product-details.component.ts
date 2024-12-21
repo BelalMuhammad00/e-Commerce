@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from 'src/core/services/products.service';
 import { Product } from '../product';
 import { CartService } from '../cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -20,7 +21,8 @@ export class ProductDetailsComponent {
 
 constructor(private _ActivatedRoute:ActivatedRoute,
    private _productService:ProductsService,
-   private _cartService:CartService
+   private _cartService:CartService,
+   private _toaster:ToastrService
    ){
   this._ActivatedRoute.params.subscribe((res:any) =>{
     
@@ -38,6 +40,7 @@ this._productService.getProductsByID(this.productId).subscribe({
 addProduct(id:string){
   this._cartService.addToCart(id).subscribe({
     next:(res)=>{ 
+this._toaster.success("Product Added To Cart Successfully");
     }
   })
 }

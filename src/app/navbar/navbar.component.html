@@ -7,26 +7,40 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="isLoggedIn">
         <li class="nav-item">
-          <a class="nav-link activeBtn" aria-current="page" routerLink="home" routerLinkActive="bg-btn">Home</a>
+          <a class="nav-link activeBtn fw-bold" aria-current="page" routerLink="home" routerLinkActive="bg-btn">Proudcts</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link activeBtn" routerLink="cart" routerLinkActive="bg-btn">Cart</a>
+          <a class="nav-link activeBtn fw-bold" routerLink="cart" routerLinkActive="bg-btn">Cart</a>
         </li>
 
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="products">Products</a>
-        </li> -->
+     <li class="nav-item">
+          <a class="nav-link activeBtn fw-bold" routerLink="brands"  routerLinkActive="bg-btn">Brands</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link activeBtn fw-bold" routerLink="wishList" routerLinkActive="bg-btn">Wish List</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link activeBtn fw-bold" routerLink="about" routerLinkActive="bg-btn">About</a>
+        </li>
 
         <!-- <li class="nav-item">
           <a class="nav-link" routerLink="catagories">Catagories</a>
         </li> -->
 
-        <!-- <li class="nav-item">
-          <a class="nav-link" routerLink="brands">Brands</a>
-        </li> -->
+   
       </ul>
 
+<ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="!isLoggedIn">
+  <li class="nav-item">
+    <a class="nav-link activeBtn fw-bold" routerLink="about" routerLinkActive="bg-btn">About</a>
+  </li>
+</ul>
+  
+      
+
 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 curcor-pointer" >
+
   <li class=" nav-item d-flex align-items-center ">
     <i class="fa-brands fa-instagram me-3"></i>
     <i class="fa-brands fa-facebook me-3"></i>
@@ -36,10 +50,10 @@
     <i class="fa-brands fa-youtube me-3"></i>
   </li>
   <li class="nav-item" *ngIf="!isLoggedIn">
-    <a class="nav-link activeBtn" routerLink="signUp" routerLinkActive="bg-btn">Register</a>
+    <a class="nav-link activeBtn fw-bold" routerLink="signUp" routerLinkActive="bg-btn">Register</a>
   </li>
   <li class="nav-item" *ngIf="!isLoggedIn">
-    <a class="nav-link activeBtn" routerLink="login" routerLinkActive="bg-btn">Login</a>
+    <a class="nav-link activeBtn fw-bold" routerLink="login" routerLinkActive="bg-btn">Login</a>
   </li>
 
   <li class="nav-item position-relative" *ngIf="isLoggedIn">
@@ -53,7 +67,7 @@
   </li>
 
   <li class="nav-item " (click)="logOut()" *ngIf="isLoggedIn">
-    <span class="nav-link curcor-pointer activeBtn" >LogOut</span>
+    <span class="nav-link curcor-pointer activeBtn fw-bold" >LogOut</span>
   </li>
 </ul>
     </div>

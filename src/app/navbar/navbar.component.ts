@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthService } from 'src/core/services/auth.service';
 import { CartService } from '../cart/cart.service';
 
@@ -8,7 +8,7 @@ import { CartService } from '../cart/cart.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnChanges{
 isLoggedIn:boolean=false;
 numOfCartItems:number=0;
 
@@ -21,12 +21,17 @@ constructor(private _AuthService:AuthService,private _cartService:CartService){
       this.isLoggedIn=false;
     }
   })
+  this._cartService.numOfCartItems.subscribe(res=>{
+    this.numOfCartItems=res;
+  })
 
-
-this._cartService.numOfCartItems.subscribe(res=>{
-  this.numOfCartItems=res;
-})
 }
+  ngOnChanges(changes: SimpleChanges): void {
+   
+this._cartService.numOfCartItems.subscribe({
+  next:(res)=>{ this.numOfCartItems=res;}
+})
+  }
 
 logOut(){
   this._AuthService.logOut()

@@ -1,0 +1,49 @@
+<div class=" py-5" >
+    <div class="bg-main-light p-3" *ngIf="wishList?.data">
+
+      <div class="container">
+        <div class="d-flex justify-content-between py-4 ">
+          <h2>Wish List</h2>
+       
+        
+         </div>
+        
+           
+            <h5>Total Numbers : <span class="text-main">{{wishListCount}}</span></h5>
+       
+            <div class="row p-3 align-items-center" *ngFor="let product of wishList.data" data-aos="fade-up"
+            data-aos-duration="3000">
+                <div class="col-md-2">
+                  <img [src]="product.imageCover" class="w-100" [alt]="product.title">
+                </div>
+                <div class="col-md-10 py-3">
+                  <div class="d-flex justify-content-between">
+                    <div>
+                      <h5>{{product.title.split(" ").splice(0,2).join(" ")}}</h5>
+                      <h5 class="text-main">{{product.price}} EGP</h5>
+              <span (click)="removeItem(product.id)" class="text-danger cursor-pointer"><i class="fa-solid fa-trash-can"></i> Remove</span>
+    
+                     </div>
+                  
+               <div>
+                <a class="fancy" [routerLink]="['/productDetails',product.id]">
+                    <span class="top-key"></span>
+                    <span class="text">Product Details</span>
+                    <span class="bottom-key-1"></span>
+                    <span class="bottom-key-2"></span>
+                  </a>
+               </div>
+              
+              
+                </div>
+              </div>
+    
+    
+        </div>
+      </div>
+
+
+  
+    
+    </div>
+    </div>

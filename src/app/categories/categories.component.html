@@ -1,1 +1,11 @@
-<p>categories works!</p>
+<owl-carousel-o [options]="customOptions"  data-aos="fade-up"
+data-aos-duration="2000">
+
+    <ng-container *ngFor="let slide of allCategories" >
+      <ng-template carouselSlide >
+        <img height="150"  [src]="slide.image" [alt]="slide.name" [title]="slide.name">
+        <h5 class="text-center">{{slide.name}}</h5>
+      </ng-template>
+    </ng-container>
+
+  </owl-carousel-o>
